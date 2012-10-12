@@ -1,0 +1,3 @@
+project	: requirements <library>/boost/test ;
+
+unit-test usage : usage.cpp ;

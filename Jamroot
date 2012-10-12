@@ -1,0 +1,13 @@
+project
+	: requirements <include>.
+	: usage-requirements <include>.
+	;
+
+alias smart_ptr
+      : # no sources
+      : # no build requirements
+      : # no default build
+      : <include>.
+      ;
+
+project test ;
