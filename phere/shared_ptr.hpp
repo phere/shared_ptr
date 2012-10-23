@@ -18,7 +18,7 @@
 namespace phere
 {
 	struct AnyNullPointerException
-	: public virtual ::std::exception
+	: public virtual ::std::runtime_error
 	, public virtual ::boost::exception
 	{};
 	template <typename T>

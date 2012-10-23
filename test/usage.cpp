@@ -2,9 +2,15 @@
 #include <boost/test/unit_test.hpp>
 
 #include <phere/shared_ptr.hpp>
+#include <phere/shared_ptr.hpp>
 
 #include <iostream>
 #include <string>
+
+namespace
+{
+  static const bool printTracking = false;
+}
 
 struct Tracker
 {
@@ -13,19 +19,23 @@ struct Tracker
     , id(++created)
   {
     ++alive;
-    std::cout << "Created Tracker #" << id
-	      << " (\"" << name << "\")"
-	      << " making " << alive << " alive."
-	      << std::endl;
+    if (printTracking) {
+      std::cout << "Created Tracker #" << id
+		<< " (\"" << name << "\")"
+		<< " making " << alive << " alive."
+		<< std::endl;
+    }
   }
 
   ~Tracker()
   {
     --alive;
-    std::cout << "Destroyed Tracker #" << id
-	      << " (\"" << name << "\")"
-	      << " leaving " << alive << " alive."
-	      << std::endl;
+    if (printTracking) {
+      std::cout << "Destroyed Tracker #" << id
+		<< " (\"" << name << "\")"
+		<< " leaving " << alive << " alive."
+		<< std::endl;
+    }
   }
 
 private:
@@ -41,5 +51,5 @@ size_t Tracker::alive = 0;
 
 BOOST_AUTO_TEST_CASE( usage )
 {
-  Tracker tracker("Foo");
+  //  Tracker tracker("Foo");
 }
