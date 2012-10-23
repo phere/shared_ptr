@@ -14,7 +14,7 @@ This pattern prevents the class of runtime bugs that results when a `shared_ptr 
 Exception on dereference or indirection through empty shared_ptr
 ----------------------------------------------------------------
 
-libc++'s `std::shared_ptr<T>` has no run-time check for NULL in the dereference or indirection operators.  You access an empty `shared_ptr`, the best you can hope for is a segmentation fault.
+[libc++](http://libcxx.llvm.org/)'s `std::shared_ptr<T>` has no run-time check for NULL in the dereference or indirection operators.  You access an empty `shared_ptr`, the best you can hope for is a segmentation fault.
 
 `boost::shared_ptr<T> empty; empty->method();` fires a `BOOST_ASSERT(px != NULL)`.  While this is slightly more programmer-friendly than libc++, the behaviour of `BOOST_ASSERT` is nonrecoverable; and worse, overridable.  While the default behaviour will at least trap into the debugger, one large project in particular returns from the `boost_assertion_handler` routine; and thus happily segfaults anyway.
 
