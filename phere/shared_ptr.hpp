@@ -42,7 +42,7 @@ namespace phere
 		: m_ptr(_ptr)
 		{}
 
-		~shared_ptr();
+		~shared_ptr() {}
 		
 		// "regular" accossors
 		T* operator->() const
