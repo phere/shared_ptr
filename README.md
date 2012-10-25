@@ -18,4 +18,4 @@ Exception on dereference or indirection through empty shared_ptr
 
 `boost::shared_ptr<T> empty; empty->method();` fires a `BOOST_ASSERT(px != NULL)`.  While this is slightly more programmer-friendly than libc++, the behaviour of `BOOST_ASSERT` is nonrecoverable; and worse, overridable.  While the default behaviour will at least trap into the debugger, one large project in particular returns from the `boost_assertion_handler` routine; and thus happily segfaults anyway.
 
-The exception thrown is a `phere::NullPointerException<T>`, which may be caught as a `phere::AnyNullPointerException`, `std::runtime_error`, or `std::exception`.
+The exception thrown is a `phere::NullPointerException<T>`, which may be caught as a `phere::AnyNullPointerException`, `boost::exception` or `std::exception`.
