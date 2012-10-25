@@ -18,12 +18,12 @@
 namespace phere
 {
 	struct AnyNullPointerException
-	: public virtual ::std::runtime_error
-	, public virtual ::boost::exception
+	: virtual ::std::exception
+	, virtual ::boost::exception
 	{};
 	template <typename T>
 	struct NullPointerException
-	: virtual public ::phere::AnyNullPointerException
+	: virtual ::phere::AnyNullPointerException
 	{};
 	
 	template <typename T>
@@ -109,7 +109,7 @@ namespace phere
 			*this = rhs;
 		}
 		
-		this_type& operator=(this_type const& rhs)
+		this_type& operator=(this_type rhs)
 		{
 			m_ptr = rhs.m_ptr;
 			return *this;
@@ -128,8 +128,8 @@ namespace phere
 			if (!result)
 			{
 				BOOST_THROW_EXCEPTION(::phere::NullPointerException<T>());
-				return result;
 			}
+			return result;
 		}
 		boost_ptr_t m_ptr;
 	};

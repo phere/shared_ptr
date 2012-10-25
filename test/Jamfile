@@ -1,3 +1,5 @@
 project	: requirements <library>/boost/test ;
 
-unit-test usage : usage.cpp ;
+lib tracker : tracker.cpp ;
+
+unit-test usage : usage.cpp tracker ;

@@ -7,52 +7,7 @@
 #include <iostream>
 #include <string>
 
-namespace
-{
-  static const bool printTracking = true;
-}
-
-struct Tracker
-{
-  Tracker(std::string _name)
-    : name(_name)
-    , id(++created)
-  {
-    ++alive;
-    if (printTracking) {
-      std::cout << "Created Tracker #" << id
-		<< " (\"" << name << "\")"
-		<< " making " << alive << " alive."
-		<< std::endl;
-    }
-  }
-
-  ~Tracker()
-  {
-    --alive;
-    if (printTracking) {
-      std::cout << "Destroyed Tracker #" << id
-		<< " (\"" << name << "\")"
-		<< " leaving " << alive << " alive."
-		<< std::endl;
-    }
-  }
-
-  std::string getName() const
-  {
-	return name;
-  }
-
-private:
-  static size_t created;
-  static size_t alive;
-
-  const std::string name;
-  const size_t id;
-};
-size_t Tracker::created = 0;
-size_t Tracker::alive = 0;
-
+#include "tracker.hpp"
 
 BOOST_AUTO_TEST_CASE( usage )
 {
